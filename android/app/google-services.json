@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "19496874807",
+    "project_id": "antelope-40f3d",
+    "storage_bucket": "antelope-40f3d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19496874807:android:5d7cdb0823b4dbe32120b2",
+        "android_client_info": {
+          "package_name": "com.apexbytes.antelope"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5DDBouiQaEr8pSGYK5DJ8iK5_e8spYTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
