@@ -10,15 +10,22 @@ class MyDrawer extends StatelessWidget {
   final void Function()? onHelpTap;
   final void Function()? onLogoutTap;
 
-  const MyDrawer({super.key, required this.onProfileTap, required this.onSettingsTap, required this.onHelpTap, this.onLogoutTap});
+  const MyDrawer(
+      {super.key,
+        required this.onProfileTap,
+        required this.onSettingsTap,
+        required this.onHelpTap,
+        this.onLogoutTap});
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Theme(
       data: Theme.of(context).copyWith(
         dividerTheme: const DividerThemeData(
           color: Colors.transparent,
-          thickness: 0, // Ensure thickness is zero
+          thickness: 0,
         ),
       ),
       child: Drawer(
@@ -27,46 +34,46 @@ class MyDrawer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
-            children: [
-              DrawerHeader(
-                child: Center(
-                  child: SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Image.asset(
-                      'lib/assets/icons/icon.png',
-                      fit: BoxFit.contain,
+              children: [
+                DrawerHeader(
+                  child: Center(
+                    child: SizedBox(
+                      width: 80,
+                      height: 80,
+                      child: Image.asset(
+                        'lib/assets/icons/icon.png',
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                 ),
-              ),
 
-              MyListTile(
-                icon: Icons.home_outlined,
-                text: 'H O M E',
-                onTap: () => Navigator.pop(context),
-              ),
+                MyListTile(
+                  icon: Icons.home_outlined,
+                  text: 'H O M E',
+                  onTap: () => Navigator.pop(context),
+                ),
 
-              // Profile
-              MyListTile(
-                  icon: Icons.person_2_outlined,
-                  text: 'P R O F I L E',
-                  onTap: onProfileTap),
+                // Profile
+                MyListTile(
+                    icon: Icons.person_2_outlined,
+                    text: 'P R O F I L E',
+                    onTap: onProfileTap),
 
-              // Settings
-              MyListTile(
-                  icon: Icons.settings_outlined,
-                  text: 'S E T T I N G S',
-                  onTap: onSettingsTap),
+                // Settings
+                MyListTile(
+                    icon: Icons.settings_outlined,
+                    text: 'S E T T I N G S',
+                    onTap: onSettingsTap),
 
-              // Help
-              MyListTile(
-                  icon: Icons.question_mark_outlined,
-                  text: 'H E L P',
-                  onTap: onHelpTap),
-            ],
+                // Help
+                MyListTile(
+                    icon: Icons.question_mark_outlined,
+                    text: 'H E L P',
+                    onTap: onHelpTap),
+              ],
             ),
-            // Logout
+            // Logout and Theme Toggle
             Padding(
               padding: const EdgeInsets.only(bottom: 25.0),
               child: Row(
@@ -78,20 +85,22 @@ class MyDrawer extends StatelessWidget {
                         text: 'L O G O U T',
                         onTap: onLogoutTap),
                   ),
-                  // Icon button
+                  // Icon button to toggle theme
                   IconButton(
                     onPressed: () {
-                      Provider.of<ThemeProvider>(context).toggleTheme();
+                      Provider.of<ThemeProvider>(context, listen: false)
+                          .toggleTheme();
                     },
                     icon: Icon(
-                        Icons.lightbulb_outline,
-                        color: Theme.of(context).colorScheme.primary,
+                      themeProvider.isDarkMode
+                          ? Icons.dark_mode_outlined
+                          : Icons.light_mode_outlined,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                 ],
               ),
             ),
-
           ],
         ),
       ),

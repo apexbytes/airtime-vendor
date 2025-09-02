@@ -5,15 +5,16 @@ import 'package:antelope/features/auth/presentation/cubits/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:antelope/features/auth/presentation/pages/help_page.dart';
 import 'package:antelope/features/auth/presentation/pages/profile_page.dart';
-import 'package:antelope/features/auth/presentation/pages/settings_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'package:antelope/features/auth/domain/entities/transaction.dart';
 import 'package:antelope/features/auth/presentation/components/recent_transactions_list.dart';
-import 'package:antelope/features/auth/presentation/pages/sell_airtime_page.dart';
-import 'package:antelope/features/auth/presentation/pages/transfer_page.dart';
+import 'package:antelope/features/pages/sell_airtime_page.dart';
+import 'package:antelope/features/pages/transfer_page.dart';
+
+import 'package:antelope/features/pages/help_page.dart';
+import 'package:antelope/features/pages/settings_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
